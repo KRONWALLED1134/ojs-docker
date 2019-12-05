@@ -7,6 +7,11 @@ Nginx docker container with configuration for OJS (including SSL via letsencrypt
 ## Installation
 Clone into the repository
 
+Update the ojs submodule
+```
+git submodule update --init --recursive
+```
+
 Open `docker-compose.yml` and configure your MySQL user / password.
 Open `init-letsencrypt.sh` and configure your domain
 
