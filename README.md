@@ -42,6 +42,4 @@ If you want to contribute to this plugin please open a pull request.
 
 ## Authors
 
-* **Torben Richter** - *Initial work*
-
-See also the list of [contributors](https://github.com/KRONWALLED1134/docker-ojs/contributors) who participated in this project.
+See the list of [contributors](https://github.com/KRONWALLED1134/docker-ojs/contributors) who participated in this project.
