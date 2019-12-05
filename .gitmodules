@@ -1,0 +1,3 @@
+[submodule "ojs"]
+	path = ojs
+	url = http://github.com/pkp/ojs.git

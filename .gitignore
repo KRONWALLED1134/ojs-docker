@@ -1,0 +1,4 @@
+sql_data/
+letsencrypt/
+var/log/
+files/**

@@ -1,0 +1,48 @@
+version: '2'
+services:
+    ojsdb:
+        image: mysql:5.7
+        restart: always
+        ports:
+            - 3306:3306
+        volumes:
+            - ./sql_data:/var/lib/mysql
+        environment:
+            MYSQL_ROOT_PASSWORD: 
+            MYSQL_DATABASE: ojs
+            MYSQL_USER: ojs_user
+            MYSQL_PASSWORD: 
+        networks:
+            - nginx 
+
+    ojs:
+        image: nginx:latest
+        restart: always
+        ports:
+            - 80:80
+            - 443:443
+        volumes:
+            - ./conf/nginx/default.conf:/etc/nginx/conf.d/default.conf
+            - ./conf/nginx/nginx.conf:/etc/nginx/nginx.conf
+            - ./html:/usr/share/nginx/html
+            - ./files:/usr/share/nginx/files 
+            - ./var/log/log/nginx:/var/log/nginx
+            - ./letsencrypt:/etc/letsencrypt
+        networks:
+            - nginx
+
+    ojsphp:
+        build: ./php
+        restart: always
+        volumes:
+            - ./html:/usr/share/nginx/html
+            - ./files:/usr/share/nginx/files
+            - ./conf/php/www.conf:/usr/local/etc/php-fpm.d/www.conf
+            - ./conf/php/php.ini:/usr/local/etc/php/php.ini
+        networks:
+            - nginx
+
+networks:
+    nginx:
+        external: true
+     
